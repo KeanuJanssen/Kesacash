@@ -20,7 +20,7 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = array();
-        return view('transaction.view', compact('transactions'));
+        return view('transactions.view', compact('transactions'));
     }
 
     /**
@@ -30,7 +30,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
