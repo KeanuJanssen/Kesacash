@@ -18,4 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('transactions', 'TransactionController')->names([
-    'create' => 'transactions.create']);
+    'store' => 'transactions.store']);

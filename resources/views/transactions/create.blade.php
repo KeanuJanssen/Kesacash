@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('transactions.create') }}" method="POST">
+                    <form action="{{ route('transactions.store') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                                 <label for="name">name:</label>
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Type name here" required>
