@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transaction;
 
 class TransactionController extends Controller
 {
@@ -41,7 +42,14 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $data = $request->validate([
+            'name'      => 'required|max:255',
+            'amount'    => 'required',
+        ]);
+
+        $negative = ($data['negative'] == 'on') ? 1 : 0;
+
+
     }
 
     /**

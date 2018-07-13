@@ -17,8 +17,8 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->Integer('user_id');
             $table->string('name');
-            $table->string('description')->nullable;
-            $table->boolean('negative');
+            $table->string('description')->default('');
+            $table->boolean('negative')->default(0);
             $table->decimal('amount', 11, 2);
             $table->timestamps();
         });
