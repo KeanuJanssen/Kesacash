@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Transaction;
+
 class TransactionController extends Controller
 {
 
@@ -41,6 +43,33 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->description == null)
+        {
+            $description = "";
+        }
+        else
+        {
+            $description = $request->description;
+        }
+
+        if($request->negative == 'on')
+        {
+            $bool = 1;
+        }
+        else
+        {
+            $bool = 0;
+        }
+
+        $transaction = Transaction::create([
+            'user_id' => auth()->user()->id,
+            'name' => $request->name,
+            'description' => $description,
+            'negative' => $bool,
+            'amount' => $request->amount
+
+        ]);
+
         return view('transactions.create');
     }
 
