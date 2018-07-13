@@ -42,14 +42,21 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request = $request->validate([
             'name'      => 'required|max:255',
             'amount'    => 'required',
         ]);
 
-        $negative = ($data['negative'] == 'on') ? 1 : 0;
+        $bool = ($request->negative == 'on') ? 1 : 0;
 
+        $transaction = Transaction::create([
+            'user_id' => auth()->user()->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'negative' => $bool,
+            'amount' => $request->amount
 
+        ]);
     }
 
     /**
