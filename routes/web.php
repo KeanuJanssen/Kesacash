@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('transactions', 'TransactionController');
+// Route::get('transactions/create', 'TransactionController@create');
+Route::get('transactions/create', 'TransactionController@create')->name('transaction.create');
+Route::post('transactions/store', 'TransactionController@store')->name('transaction.store');
